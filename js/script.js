@@ -3,12 +3,12 @@
 
 
 // Bonus, scegli la difficoltà
-var difficolta = prompt('Scegli la difficoltà. Scrivi 0, 1 o 2');
+var difficolta = parseInt(prompt('Scegli la difficoltà. Scrivi 0, 1 o 2'));
 
-if (difficolta == 0) {
-  var numeriMax = 100;
-  var tentativi = 84;
-} else if (difficolta == 1) {
+var numeriMax = 100;
+var tentativi = 84;
+
+if (difficolta == 1) {
   numeriMax = 80;
   tentativi = 64;
 } else if (difficolta == 2) {
@@ -31,19 +31,18 @@ var numeroInserito,
     j = 0,
     punteggio = 0;
 
-while (j < tentativi) {
-  numeroInserito = prompt('Inserisci un numero sempre diverso da 1 a 100')
+while (j < tentativi && !trovato) {
+  numeroInserito = parseInt(prompt('Inserisci un numero sempre diverso da 1 a 100'));
   console.log('Numero inserito ' + (j + 1) + ': ' + numeroInserito);
 
   // se il numero è presente nella lista dei numeri generati, la partita termina,
   // altrimenti continua chiedendo all’utente un altro numero.
-  for (var y = 0; y < numeriVietati.length; y++) {
-    if (numeroInserito == numeriVietati[y]) {
+    var trovato = numeriVietati.includes(numeroInserito);
+    console.log(trovato);
+    if (trovato == true) {
       // La partita termina quando il giocatore inserisce un numero “vietato” o raggiunge il numero massimo possibile di tentativi consentiti.
       // Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha inserito un numero consentito.
       alert('Hai inserito un numero "vietato", il tuo punteggio è ' + punteggio);
-      j = tentativi;
-    }
   }
   j++;
   punteggio++;
