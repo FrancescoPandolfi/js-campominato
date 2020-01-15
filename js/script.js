@@ -42,20 +42,17 @@ while (j < tentativi && !trovato) {
   numeroInserito = parseInt(prompt('Inserisci un numero sempre diverso da 1 a 100 - ' + 'Tentativo:' + tuoTentativo));
   console.log('Numero inserito ' + (j + 1) + ': ' + numeroInserito);
 
-  if (!listaNumeriInseriti.includes(numeroInserito)) {
+  // controlla se il numero è già stato inserito se è 0 o NaN
+  if (numeroInserito != 0 && !isNaN(numeroInserito) && !listaNumeriInseriti.includes(numeroInserito)) {
     listaNumeriInseriti.push(numeroInserito)
     console.log('Array numeri inseriti ' + listaNumeriInseriti);
   } else {
-    alert('Hai già inserito questo numero, mettine uno diverso.')
+    alert('Errore, devi inserire un numero valido o metterne uno diverso.')
     tuoTentativo--;
     punteggio--;
     j--;
-
   }
-
-
-
-
+  
   // se il numero è presente nella lista dei numeri generati, la partita termina,
   // altrimenti continua chiedendo all’utente un altro numero.
     var trovato = numeriVietati.includes(numeroInserito);
@@ -64,7 +61,12 @@ while (j < tentativi && !trovato) {
       // La partita termina quando il giocatore inserisce un numero “vietato” o raggiunge il numero massimo possibile di tentativi consentiti.
       // Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha inserito un numero consentito.
       alert('Hai inserito un numero "vietato", il tuo punteggio è ' + punteggio);
-  }
+    }
+    if (j == tentativi) {
+      alert('Hai vinto');
+    }
+
+
   j++;
   punteggio++;
   tuoTentativo++;
