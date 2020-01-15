@@ -34,11 +34,27 @@ console.log(numeriVietati);
 
 var numeroInserito,
     j = 0,
-    punteggio = 0;
+    punteggio = 0,
+    tuoTentativo = 1,
+    listaNumeriInseriti = [];
 
 while (j < tentativi && !trovato) {
-  numeroInserito = parseInt(prompt('Inserisci un numero sempre diverso da 1 a 100'));
+  numeroInserito = parseInt(prompt('Inserisci un numero sempre diverso da 1 a 100 - ' + 'Tentativo:' + tuoTentativo));
   console.log('Numero inserito ' + (j + 1) + ': ' + numeroInserito);
+
+  if (!listaNumeriInseriti.includes(numeroInserito)) {
+    listaNumeriInseriti.push(numeroInserito)
+    console.log('Array numeri inseriti ' + listaNumeriInseriti);
+  } else {
+    alert('Hai già inserito questo numero, mettine uno diverso.')
+    tuoTentativo--;
+    punteggio--;
+    j--;
+
+  }
+
+
+
 
   // se il numero è presente nella lista dei numeri generati, la partita termina,
   // altrimenti continua chiedendo all’utente un altro numero.
@@ -51,8 +67,8 @@ while (j < tentativi && !trovato) {
   }
   j++;
   punteggio++;
+  tuoTentativo++;
 }
-
 
 
 
