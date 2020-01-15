@@ -17,11 +17,16 @@ if (difficolta == 1) {
 }
 
 
-// Il computer deve generare 16 numeri casuali da 1 a 100.
+// Il computer deve generare 16 numeri casuali da 1 a 100 sempre diversi.
 var numeriVietati = [];
 
-for (var i = 0; i < 16; i++) {
-  numeriVietati.push(getRandomInt(1, numeriMax));
+while (numeriVietati.length < 16) {
+
+  var numeroDaInserire = getRandomInt(1, numeriMax);
+
+  if (!numeriVietati.includes(numeroDaInserire)) {
+    numeriVietati.push(numeroDaInserire);
+  }
 }
 console.log(numeriVietati);
 
@@ -38,7 +43,7 @@ while (j < tentativi && !trovato) {
   // se il numero è presente nella lista dei numeri generati, la partita termina,
   // altrimenti continua chiedendo all’utente un altro numero.
     var trovato = numeriVietati.includes(numeroInserito);
-    console.log(trovato);
+    console.log('Il numero inserito è tra quelli vietati? ' + trovato);
     if (trovato == true) {
       // La partita termina quando il giocatore inserisce un numero “vietato” o raggiunge il numero massimo possibile di tentativi consentiti.
       // Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha inserito un numero consentito.
