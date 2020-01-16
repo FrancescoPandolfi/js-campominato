@@ -5,15 +5,40 @@
 // Bonus, scegli la difficoltà
 var difficolta = parseInt(prompt('Scegli la difficoltà. Scrivi 0, 1 o 2'));
 
-var numeriMax = 100;
-var tentativi = 84;
+controlIf_012(difficolta);
+
+// funzione che controlla che il numero inserito sia 0 1 2
+// per comodità ho messo dentro il prompt in questo caso
+
+function controlIf_012(num) {
+  while (num != 0 && num != 1 && num != 2) {
+    var num = parseInt(prompt('Puoi inserire solo 0, 1 o 2'));
+  }
+}
+
+// Imposta la difficoltà
+switch (difficolta) {
+
+  case 1:
+    var numeriMax = 80;
+    var tentativi = 64;
+    break;
+
+  case 2:
+    var numeriMax = 50;
+    var tentativi = 34;
+    break;
+
+  default:
+    var numeriMax = 100;
+    var tentativi = 84;
+}
+
 
 if (difficolta == 1) {
-  numeriMax = 80;
-  tentativi = 64;
+
 } else if (difficolta == 2) {
-  numeriMax = 50;
-  tentativi = 34;
+
 }
 
 
@@ -52,7 +77,7 @@ while (j < tentativi && !trovato) {
     punteggio--;
     j--;
   }
-  
+
   // se il numero è presente nella lista dei numeri generati, la partita termina,
   // altrimenti continua chiedendo all’utente un altro numero.
     var trovato = numeriVietati.includes(numeroInserito);
